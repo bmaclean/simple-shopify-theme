@@ -1,4 +1,4 @@
-{%- assign display_map = false -%}
+{% assign display_map = false %}
 {%- assign onboarding = false -%}
 {%- assign bg_image = section.settings.background_image -%}
 
@@ -14,8 +14,7 @@
   #MapSection--{{ section.id }} .map-section__image {
     background-position: {{ section.settings.background_image_position }};
   }
-
-  @media only screen and (max-width: 750px) {
+  @media only screen and (max-width: 749px) {
     #MapSection--{{ section.id }} .map-section__image {
       padding-top: {{ 1 | divided_by: bg_image.aspect_ratio | times: 100 }}%;
     }
@@ -23,39 +22,39 @@
   {% endif %}
 </style>
 
-
 <div id="MapSection--{{ section.id }}"
      class="map-section
            {% if display_map %}map-section--display-map{% endif %}
            {% if onboarding == true %}map-section--onboarding{% endif %}"
      data-section-id="{{ section.id }}"
      data-section-type="map">
-  <div class="page-width map-section__wrapper">
-    <div class="map-section__content-wrapper">
+  <div class="wrapper map-section__wrapper">
+    <div class="map-section__content-wrapper flex--half">
       <div class="map-section__content">
-        <h2 class="visually-hidden visually-hidden--static">{{ 'sections.map.section_heading' | t }}</h2>
         {% if section.settings.heading != blank %}
           <h3 class="h4">{{ section.settings.heading | escape }}</h3>
         {% endif %}
         {% if section.settings.address != blank %}
-          <div class="rte-setting">{{ section.settings.address }}</div>
+          <div class="rte">{{ section.settings.address }}</div>
           {% if section.settings.map_address != blank and section.settings.button_text != blank %}
             <p>
               <a href="https://maps.google.com?daddr={{ section.settings.map_address | escape }}"
-                 class="btn btn--secondary btn--small map_section__directions-btn"
+                 class="btn btn--secondary map_section__directions-btn"
                  target="_blank"
-                 rel="noopener"
-                 aria-describedby="a11y-new-window-external-message"
               >
-                {% if section.settings.show_pin %}{% include 'icon-pin' %}{% endif %}
-                <span>{{ section.settings.button_text | escape }}</span>
+                {% if section.settings.show_pin %}
+                  {% include 'icon-pin' %}
+                {% endif %}
+                {% if section.settings.button_text %}
+                  <span>{{ section.settings.button_text | escape }}</span>
+                {% endif %}
               </a>
             </p>
           {% endif %}
         {% endif %}
       </div>
     </div>
-    <div class="map-section__background-wrapper">
+    <div class="map-section__background-wrapper flex--half">
       {% if bg_image != blank %}
         <div class="map-section__image lazyload js"
              data-bgset="{% include 'bgset', image: bg_image %}"
@@ -64,7 +63,7 @@
              style="background-image: url('{{ bg_image | img_url: '300x300' }});">
         </div>
         <noscript>
-          <div class="map-section__image" style="background-image: url({{ bg_image | img_url: 'x800', crop: 'top' }});"></div>
+          <div class="map-section__image" style="background-image: url({{ bg_image | img_url: '1024x1024', crop: 'top' }});"></div>
         </noscript>
       {% elsif onboarding == true %}
         <div class="placeholder-background">
@@ -85,7 +84,6 @@
 </div>
 
 
-
 {% schema %}
 {
   "name": {
@@ -100,7 +98,7 @@
     "zh-CN": "地图",
     "zh-TW": "地圖"
   },
-  "class": "index-section index-section--flush-medium-up",
+  "class": "index-section",
   "settings": [
     {
       "type": "header",
@@ -124,7 +122,7 @@
         "de": "Titel",
         "en": "Heading",
         "es": "Título",
-        "fr": "En-tête",
+        "fr": "Titre",
         "it": "Heading",
         "ja": "見出し",
         "nl": "Kop",
@@ -156,19 +154,19 @@
         "it": "Indirizzo e orari",
         "ja": "住所と営業時間",
         "nl": "Adres en openingstijden",
-        "pt-BR": "Endereço e horário",
+        "pt-BR": "Endereço e horas",
         "zh-CN": "地址和时间",
         "zh-TW": "地址和營業時間"
       },
       "default": {
         "de": "<p>Musterstraße 123<br>12345 Musterstadt</p><p>Mo - Fr, 10 - 21 Uhr<br>Samstag, 11 - 21 Uhr<br>Sonntag, Ruhetag</p>",
         "en": "<p>123 Fake St.<br>Toronto, Canada</p><p>Mon - Fri, 10am - 9pm<br>Saturday, 11am - 9pm<br>Sunday, 11am - 5pm</p>",
-        "es": "<p>123 Fake St. <br> Toronto, Canadá</p><p>Lun - Vie, 10 a.m. - 9 p.m. <br> Sábados, de 11 am a 09 pm <br> Domingos, de 11 am a 05 pm</p>",
-        "fr": "<p>123 5e Avenue<br>Toronto, Canada</p><p>Lundi au vendredi, 10 h 00 à 21 h 00<br>Samedi, 11 h 00 à 21 h 00<br>Dimanche, fermé",
+        "es": "<p>123 Fake St. <br> Toronto, Canadá</p><p>Mon - Vie, 10 a.m. - 9 p.m. <br> Sábados, de 11:00am a 09:00pm <br> Domingo, de 11:00am a 05:00pm</p>",
+        "fr": "<p>123 rue inventée<br>Paris, France</p><p>Lun. - ven., 10 h - 21 h<br>Samedi, 11 h - 21 h<br>Dimanche, 11 h - 17 h</p>",
         "it": "<p>123 Fake St.<br>Toronto, Canada</p><p>Lun-Ven, 10:00 - 21:00<br>Sabato, 11:00 - 21:00<br>Domenica, 11:00 - 17:00</p>",
         "ja": "<p>123 Fake St.<br>Toronto, Canada</p><p>月曜日～金曜日、午前10時〜午後9時<br>土曜日、午前11時〜午後9時<br>日曜日、午前11時〜午後5時</p>",
         "nl": "<p>Dorpsweg 1<br>Arnhem, Nederland</p><p>ma - vr, 10:00 - 21:00<br>zaterdag, 11:00 - 21:00<br>zondag, 11:00 - 17:00</p>",
-        "pt-BR": "<p>123 Rua Inventada<br> São Paulo, Brasil</p><p>Seg. - Sex., 10h às 21h <br> Sábado, 11h às 21h <br> Domingo, 11h às 17h</p>",
+        "pt-BR": "<p>123 Fake St. <br> Toronto, Canadá</p><p>Seg. - Sex., 10h - 21h <br> Sábado, 11h às 21h <br> Domingo, 11h às 17h</p>",
         "zh-CN": "<p>123 Fake St.<br>Toronto, Canada</p><p>周一至周五上午 10 点至晚上 9 点<br>周六上午 11 点至晚上 9 点<br>周日上午 11 点至下午 5 点</p>",
         "zh-TW": "<p>加拿大多倫多<br>假設範例街 123 號</p><p>星期一 - 星期五，上午 10 點 - 下午 9 點<br>星期六，上午 11 點 - 下午 9 點<br>星期日，上午 11 點 - 下午 5 點</p>"
       }
@@ -179,7 +177,7 @@
       "label": {
         "de": "Adresse",
         "en": "Map address",
-        "es": "Dirección en el mapa",
+        "es": "Dirección del mapa",
         "fr": "Adresse de la carte",
         "it": "Indirizzo su mappa",
         "ja": "マップアドレス",
@@ -201,16 +199,16 @@
         "zh-TW": "Google 地圖會找出確切位置"
       },
       "default": {
-        "de": "4141 Pierre-de Coubertin Ave, Montreal",
-        "en": "301 Front St W, Toronto",
-        "es": "301 Front St W, Toronto",
-        "fr": "Arsenalo g. 5, Vilnius",
-        "it": "301 Front St W, Toronto",
-        "ja": "301 Front St W, Toronto",
-        "nl": "301 Front St W, Toronto",
-        "pt-BR": "Av. Paulista, 1234, São Paulo",
-        "zh-CN": "301 Front St W, Toronto",
-        "zh-TW": "301 Front St W, Toronto"
+        "de": "80 Spadina Ave, Toronto",
+        "en": "80 Spadina Ave, Toronto",
+        "es": "80 Spadina Ave, Toronto",
+        "fr": "80 Spadina Ave, Toronto",
+        "it": "80 Spadina Ave, Toronto",
+        "ja": "80 Spadina Ave, Toronto",
+        "nl": "Dorpsweg 1, Arnhem",
+        "pt-BR": "80 Spadina Ave, Toronto",
+        "zh-CN": "80 Spadina Ave, Toronto",
+        "zh-TW": "80 Spadina Ave, Toronto"
       }
     },
     {
@@ -231,7 +229,7 @@
       "default": {
         "de": "Wegbeschreibung bekommen",
         "en": "Get directions",
-        "es": "Recibir instrucciones",
+        "es": "Obtener indicaciones",
         "fr": "Obtenir un itinéraire",
         "it": "Richiedi direzioni",
         "ja": "道順を知る",
@@ -252,7 +250,7 @@
         "it": "Mostra pin",
         "ja": "ピンを表示する",
         "nl": "Pin tonen",
-        "pt-BR": "Mostrar pin",
+        "pt-BR": "Exibir pin",
         "zh-CN": "显示针",
         "zh-TW": "顯示 PIN 碼"
       },

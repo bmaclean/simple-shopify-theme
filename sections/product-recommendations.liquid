@@ -1,26 +1,22 @@
 {%- if section.settings.show_product_recommendations -%}
   {%- if recommendations.performed -%}
     {%- if recommendations.products_count > 0 -%}
-      <div class="product-recommendations__inner">
-        {%- if section.settings.heading != blank -%}
-          <div class="section-header text-center">
-            <h2>{{ section.settings.heading | escape }}</h2>
-          </div>
-        {%- endif -%}
-        <ul class="grid grid--uniform grid--view-items">
-          {%- for product in recommendations.products -%}
-            <li class="grid__item small--one-half medium-up--one-quarter">
-              {% include 'product-card-grid', max_height: 250 %}
-            </li>
-          {%- endfor -%}
-        </ul>
+      <hr>
+      {%- if section.settings.heading != blank -%}
+        <h2 class="section-header__title h3">{{ section.settings.heading | escape }}</h2>
+      {%- endif -%}
+      <div class="grid grid--uniform">
+        {%- assign grid_item_width = 'medium-up--one-quarter small--one-half' -%}
+        
+        {%- for product in recommendations.products -%}
+          {% include 'product-grid-item' %}
+        {%- endfor -%}
       </div>
     {%- endif -%}
   {%- else  -%}
-    <div class="page-width" data-product-id="{{ product.id }}" data-section-id="{{ section.id }}" data-section-type="product-recommendations"></div>
+    <div data-product-id="{{ product.id }}" data-section-id="{{ section.id }}" data-section-type="product-recommendations"></div>
   {%- endif -%}
 {%- endif -%}
-
 {% schema %}
 {
   "name": {
@@ -95,18 +91,18 @@
     },
     {
       "type": "checkbox",
-      "id": "show_vendor",
+      "id": "vendor_show",
       "label": {
-        "de": "Lieferanten anzeigen",
-        "en": "Show vendor",
-        "es": "Mostrar proveedor",
-        "fr": "Afficher les vendeurs",
-        "it": "Mostra fornitore",
-        "ja": "販売元を表示する",
-        "nl": "Leverancier weergeven",
-        "pt-BR": "Exibir fornecedor",
-        "zh-CN": "显示厂商",
-        "zh-TW": "顯示廠商"
+        "de": "Produktverkäufer anzeigen",
+        "en": "Show product vendor",
+        "es": "Mostrar proveedor del producto",
+        "fr": "Afficher le distributeur du produit",
+        "it": "Mostra fornitore prodotto",
+        "ja": "商品の販売元を表示する",
+        "nl": "Productleverancier weergeven",
+        "pt-BR": "Exiba o fornecedor do produto",
+        "zh-CN": "显示产品厂商",
+        "zh-TW": "顯示產品廠商"
       },
       "default": false
     }
