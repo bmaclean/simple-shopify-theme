@@ -115,10 +115,7 @@
               </select>
 
               {% if section.settings.product_quantity_enable %}
-                <div class="product-single__quantity">
-                  <label for="Quantity">{{ 'products.product.quantity' | t }}</label>
-                  <input type="number" id="Quantity" name="quantity" value="1" min="1">
-                </div>
+				{% include 'product-quantity' %}
               {% endif %}
 
               <div class="product-single__cart-submit-wrapper{% if section.settings.enable_payment_button %} product-single__shopify-payment-btn{% endif %}{% if section.settings.add_to_cart_width == 'full_width' %} product-form--full{% endif %}">

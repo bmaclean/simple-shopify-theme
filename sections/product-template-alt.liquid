@@ -133,6 +133,10 @@
 			  {% if section.settings.product_quantity_enable %}
 				{% include 'product-quantity' %}
 			  {% endif %}
+
+			  {% if section.settings.product_insurance %}
+			  {% include 'product-insurance' %}
+			  {% endif %}
   
 			  <div class="product-single__cart-submit-wrapper{% if section.settings.enable_payment_button %} product-single__shopify-payment-btn{% endif %}{% if section.settings.add_to_cart_width == 'full_width' %} product-form--full{% endif %}">
 				<button type="submit" name="add" id="AddToCart"class="btn product-single__cart-submit{% if section.settings.add_to_cart_width == 'full_width' %} btn--full{% endif %}{% if section.settings.enable_payment_button %} shopify-payment-btn btn--secondary{% endif %}">
@@ -230,6 +234,22 @@
 		  "pt-BR": "Exiba o fornecedor do produto",
 		  "zh-CN": "显示产品厂商",
 		  "zh-TW": "顯示產品廠商"
+		}
+	  },
+	  {
+		"type": "checkbox",
+		"id": "product_insurance",
+		"label": {
+		  "de": "Produktversicherung hinzufügen",
+		  "en": "Provide product insurance",
+		  "es": "Añadir seguro de producto",
+		  "fr": "Ajouter une assurance produit",
+		  "it": "Aggiungi assicurazione sul prodotto",
+		  "ja": "商品保険を追加する",
+		  "nl": "Voeg een productverzekering toe",
+		  "pt-BR": "Adicionar seguro de produto",
+		  "zh-CN": "添加产品保险",
+		  "zh-TW": "添加產品保險"
 		}
 	  },
 	  {

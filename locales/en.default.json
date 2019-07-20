@@ -290,7 +290,8 @@
       "view_cart": "View cart",
       "continue_shopping": "Continue shopping",
       "description": "Description",
-      "full_details": "Full details"
+	  "full_details": "Full details",
+	  "insurance": "Add Product Insurance"
     },
     "zoom": {
       "next": "Next (Right arrow key)",
