@@ -134,8 +134,8 @@
 				{% include 'product-quantity' %}
 			  {% endif %}
 
-			  {% if section.settings.product_insurance %}
-			  {% include 'product-insurance' %}
+			  {% if section.settings.extended_warranty %}
+			  {% include 'product-extended-warranty' %}
 			  {% endif %}
   
 			  <div class="product-single__cart-submit-wrapper{% if section.settings.enable_payment_button %} product-single__shopify-payment-btn{% endif %}{% if section.settings.add_to_cart_width == 'full_width' %} product-form--full{% endif %}">
@@ -238,10 +238,10 @@
 	  },
 	  {
 		"type": "checkbox",
-		"id": "product_insurance",
+		"id": "extended_warranty",
 		"label": {
 		  "de": "Produktversicherung hinzufügen",
-		  "en": "Provide product insurance",
+		  "en": "Provide extended warranty",
 		  "es": "Añadir seguro de producto",
 		  "fr": "Ajouter une assurance produit",
 		  "it": "Aggiungi assicurazione sul prodotto",
