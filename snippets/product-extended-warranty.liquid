@@ -1,4 +1,8 @@
-<div class="product-insurance">
-		<input type="checkbox" id="Insurance" name="quantity" value="1" min="1">
-		<label for="Insurance">{{ 'products.product.insurance' | t }}</label>
+<div class="product-warranty">
+		<input type="checkbox" id="Warranty" name="quantity">
+		<label for="Warranty">{{ 'products.product.extended_warranty' | t }}</label>
+		<i class="fa">&#xf05a;</i>
+		<div class="info-box">
+			<p>Manufacturer warranties only provide so much protection. The extended warranty covers any damages or malfunctions with your purchase for an additional {{settings.extended_warranty_pct}}%.</p>
+		</div>
 </div>

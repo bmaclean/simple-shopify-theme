@@ -3277,8 +3277,32 @@ select::-ms-expand {
 	margin-bottom: 2px;
 }
 
+.product-warranty .fa {
+	margin-left: 4px;
+	margin-top: 1px;
+	cursor: pointer;
+}
+
 .product-warranty input:checked {
 	background-color: $color-primary;
+}
+
+.info-box {
+	display: none;
+	position: absolute;
+	margin-top: 25px;
+	margin-left: 50px;
+	width: 200px;
+	background: white;
+	z-index: 10;
+	// border: 1px solid black;
+	font-size: 0.8 * $font-size-base;
+	padding: 10px;
+	box-shadow: 5px 10px 18px #363636;
+}
+
+i:hover + .info-box {
+    display: block;
 }
 
 .product-form label,

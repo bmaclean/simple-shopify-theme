@@ -1019,6 +1019,52 @@
   },
   {
     "name": {
+      "en": "Product Options"
+    },
+    "settings": [
+	  {
+		"type": "checkbox",
+		"id": "extended_warranty",
+		"label": {
+		  "de": "Produktversicherung hinzufügen",
+		  "en": "Provide extended warranty",
+		  "es": "Añadir seguro de producto",
+		  "fr": "Ajouter une assurance produit",
+		  "it": "Aggiungi assicurazione sul prodotto",
+		  "ja": "商品保険を追加する",
+		  "nl": "Voeg een productverzekering toe",
+		  "pt-BR": "Adicionar seguro de produto",
+		  "zh-CN": "添加产品保险",
+		  "zh-TW": "添加產品保險"
+		}
+	  },
+	  {
+        "type": "range",
+		"id": "extended_warranty_pct",
+		"label": {
+		  "en": "Extended Warranty Percentage"
+		},
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": {
+          "de": "%",
+          "en": "%",
+          "es": "%",
+          "fr": "%",
+          "it": "%",
+          "ja": "%",
+          "nl": "%",
+          "pt-BR": "%",
+          "zh-CN": "%",
+          "zh-TW": "%"
+		},
+        "default": 0
+	  }
+
+    ]
+  },  {
+    "name": {
       "de": "Warenkorb",
       "en": "Cart",
       "es": "Carrito",
@@ -1047,7 +1093,7 @@
           "zh-TW": "商品加入購物車時留在目前頁面"
         },
         "default": true
-      }
+	  }
     ]
   },
   {
